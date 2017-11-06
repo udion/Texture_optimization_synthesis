@@ -1,4 +1,4 @@
-function [Xnext, X1_, X2_] = updateE(Xcurr, Isample, w)
+function [Xnext, X1_, X2_] = updateE(Xcurr, Isample, w, r)
 %UPDATEE It takes the current big picture and updates it in such a manner
 %that the energy after update is minimised, at pixels where multiple values
 %were possible it takes the average
@@ -10,7 +10,10 @@ function [Xnext, X1_, X2_] = updateE(Xcurr, Isample, w)
     for i=1:w/4:rmax
         for j=1:w/4:cmax
             Patch = Xcurr(i:i+w-1, j:j+w-1, :);
-            [simP, ~, ~, ~] = NNPatchSearch(Patch, Isample);
+            [simP, ~, ~, ~] = NNPatchSearch(Patch, Isample, r);
+            %optimised
+            %[simP, ~, ~, ~] = NNPatchSearchX(Patch, Isample_spliced, cols_in_row, r);
+            %
             Tens(i:i+w-1, j:j+w-1, :, 1) = Tens(i:i+w-1, j:j+w-1, :, 1)+simP;
             Tens(i:i+w-1, j:j+w-1, :, 2) = Tens(i:i+w-1, j:j+w-1, :, 2)+1;
         end
