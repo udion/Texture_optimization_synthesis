@@ -33,7 +33,7 @@ function [ol11, ol12, ol13, ol21, ol22, ol23, ol31, ol32, ol33, toteng] = synthe
         [X,~,~,en] = updateEX(X,Isample_spliced3,cols_in_row3,8,r);
         enarray1(2*numpass + i) = en;
     end
-    display('level 1 pass 1 done.');
+    display('level 1 pass 3 done.');
     ol13 = X;
     imshow(ol13,[]);
     
@@ -67,7 +67,7 @@ function [ol11, ol12, ol13, ol21, ol22, ol23, ol31, ol32, ol33, toteng] = synthe
     imshow(ol23,[]);
     
     %level 3
-    diaplay('level 3 starting...');
+    display('level 3 starting...');
     odim = base*3;
     numpass = 25;%*lvl
     enarray3 = zeros([1, 3*numpass]);
@@ -77,21 +77,21 @@ function [ol11, ol12, ol13, ol21, ol22, ol23, ol31, ol32, ol33, toteng] = synthe
         [X,~,~,en] = updateEX(X,Isample_spliced1,cols_in_row1,32,r);
         enarray3(i) = en;
     end
-    display('level 3 pass 1 done');
+    display('level 3 pass 1 done.');
     ol31 = X;
     imshow(ol31,[]);
     for i=1:numpass
         [X,~,~,en] = updateEX(X,Isample_spliced2,cols_in_row2,16,r);
         enarray3(numpass+i) = en;
     end
-    display('level 3 pass 2 done');
+    display('level 3 pass 2 done.');
     ol32 = X;
     imshow(ol32,[]);
     for i=1:numpass
         [X,~,~,en] = updateEX(X,Isample_spliced3,cols_in_row3,8,r);
         enarray3(2*numpass + i) = en;
     end
-    display('level 3 pass 3 done');
+    display('level 3 pass 3 done.');
     ol33 = X;
     imshow(ol33,[]);
     
